@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="task-detail-container">
+  <div class="task-detail-header">
+    <div class="task-detail-nav">
+      <div class="filter">
+        <form action="" method="GET">
+          <select name="priority" id="priority">
+            <option value="all">All</option>
+            <option value="low" {% if request.GET.priority == 'low' %}selected{% endif %}>Low</option>
+            <option value="medium" {% if request.GET.priority == 'medium' %}selected{% endif %}>Medium</option>
+            <option value="high" {% if request.GET.priority == 'high' %}selected{% endif %}>High</option>
+          </select>
+        </form>
+      </div>
+
+      <div class="sort-by">
+        <form action="" method="GET">
+          <select name="sort" id="sort" onChange="this.form.submit()">
+            <option value="created_asc" {% if request.GET.sort == 'created_asc' %}selected{% endif %}>Oldest</option>
+            <option value="created_desc" {% if request.GET.sort == 'created_desc' %}selected{% endif %}>Newest</option>
+            <option value="deadline_asc" {% if request.GET.sort == 'deadline_asc' %}selected{% endif %}>Deadline ↑</option>
+            <option value="deadline_desc" {% if request.GET.sort == 'deadline_desc' %}selected{% endif %}>Deadline ↓</option>
+          </select>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

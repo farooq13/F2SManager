@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<h1>Update Task</h1>
+<div>
+  <form action="" method="POST">
+    {% csrf_token %}
+    <div class="">
+      <label for="task-title">Task Title</label>
+      {{form.title}}
+    </div>
+
+    <div class="">
+      <label for="task">Task</label>
+      {{form.task}}
+    </div>
+  </form>
+</div>
+{% endblock content %}

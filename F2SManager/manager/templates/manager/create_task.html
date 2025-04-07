@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<div class="back-btn">
+  <a href="{{ request.META.HTTP_REFERER }}">
+    <img class="back-icon" src="{% static 'assets/icons/arrow-left.svg' %}" alt="">
+  </a>
+  <div class="back-tooltip">Back</div>
+</div>
+<div class="task-form-container">
+  <div class="task-form-wrapper">
+    <form class="task-form" action="" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input class="add-btn" type="submit" value="Add">
+    </form>
+  </div>
+</div>
+{% endblock content %}

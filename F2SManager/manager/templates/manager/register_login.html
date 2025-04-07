@@ -1,0 +1,32 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="auth-container">
+  <div class="auth-form">
+    {% if page == 'login' %}
+    <form action="" method="POST">
+      {% csrf_token %}
+      <label for="email">Emal</label>
+      <input type="email" name="email" id="emal" placeholder="Email">
+
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" placeholder="Password">
+
+      <input type="submit" value="Login">
+
+      <p>Don't have an account?</p>
+      <a href="{% url 'register' %}">SingUp</a>
+    </form>
+    {% else %}
+    <form action="" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Register">
+
+      <p>Alread have an account?</p>
+      <a href="{% url 'login' %}">Login</a>
+    </form>
+    {% endif %}
+  </div>
+</div>
+{% endblock content %}

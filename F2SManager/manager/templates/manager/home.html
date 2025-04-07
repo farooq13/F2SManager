@@ -1,0 +1,105 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<div class="create-task-container">
+  <a href="{% url 'create-task' %}">Add Task</a>
+  <img src="{% static 'assets/icons/add.svg' %}" alt="">
+</div>
+<div class="main-container">
+  <aside>
+    <div class="side-bar">Aside</div>
+    <div class="mobile-sidebar">
+      <div class="mobile-sidebar-icons">
+        <a href="#">
+          <img src="{% static 'assets/icons/user.svg' %}" alt="">
+        </a>
+  
+        <a href="#">
+          <img src="{% static 'assets/icons/tools.svg' %}" alt="">
+        </a>
+  
+        <a href="#">
+          <img src="{% static 'assets/icons/sign-out.svg' %}" alt="">
+        </a>
+      </div>
+    </div>
+  </aside>
+  <div class="task-container">
+    <!-- Task Container Header -->
+    <div class="task-container-wrapper">
+      <div class="filter-container">
+        <div class="filter-text">Filter</div>
+        <form action="" method="GET">
+          <select name="priority" id="priority" onChange="this.form.submit()">
+            <option value="all">All</option>
+            <option value="low" {% if request.GET.priority == 'low' %}selected{% endif %}>Low</option>
+            <option value="medium" {% if request.GET.priority == 'medium' %}selected{% endif %}>Medium</option>
+            <option value="high" {% if request.GET.priority == 'high' %}selected{% endif %}>High</option>
+          </select>
+        </form>
+      </div>
+      <!-- Sort Task -->
+      <div class="sort-by-container">
+        <div class="sort-by-text">Sort by</div>
+        <form action="" method="GET">
+          <select name="sort" id="sort" onChange="this.form.submit()">
+            <option value="created_asc" {% if request.GET.sort == 'created_asc' %}selected{% endif %}>Oldest</option>
+            <option value="created_desc" {% if request.GET.sort == 'created_desc' %}selected{% endif %}>Newest</option>
+            <option value="start_asc" {% if request.GET.sort == 'start_asc' %}selected{% endif %}>Start Date ↑</option>
+            <option value="start_desc" {% if request.GET.sort == 'start_desc' %}selected{% endif %}>Start Date ↓</option>
+            <option value="end_asc" {% if request.GET.sort == 'end_asc' %}selected{% endif %}>End Date ↑</option>
+            <option value="end_desc" {% if request.GET.sort == 'end_desc' %}selected{% endif %}>End Date ↓</option>
+          </select>
+        </form>
+      </div>
+
+      <div class="toggle-by-status">
+        <div class="status-text">Status</div>
+        <form action="" method="GET">
+          <select name="statu" id="status" onChange="this.form.submit()">
+            <option value="all">All</option>
+            <option value="completed" {% if request.GET.status == 'completed' %}selected{% endif %}>Completed</option>
+            <option value="pending" {% if request.GET.status == 'pending' %}selected{% endif %}>Pending</option>
+          </select>
+        </form>
+      </div>
+    </div>
+    {% for task in tasks %}
+    <div class="task wrapper">
+        <div class="task-content-container" data-href="{% url 'task-detail' task.pk %}">
+          <div class="task-title">
+            <div class="task-btns">
+              <h4 class="task-date" >Created: {{ task.created_at|date:"j F, Y"}}</h4>
+              <div class="edit-btn">
+                <a href="{% url 'update-task' task.pk %}">
+                  <img class="edit-icon" src="{% static 'assets/icons/edit.svg' %}" alt="">
+                </a>
+                <div class="tooltip">Edit</div>
+              </div>
+      
+              <div class="delete-btn">
+                <a href="{% url 'delete-task' task.pk %}">
+                  <img class="delete-icon" src="{% static 'assets/icons/delete.svg' %}" alt="">
+                </a>
+                <div class="tooltip">Delete</div>
+              </div>
+            </div>
+            <h3>  {{ task.title }} <small>{{ task.priority }}</small></h3>
+            <p class="task-content">{{ task.description }}</p>
+            <div>
+              {% if task.todo %}
+                <input type="checkbox" name="" id="todo">
+                {{ task.todo }}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <p class="filter-notfound">No task found for this filter.</p>
+      {% endfor %}
+  </div>
+  
+</div>
+{% endblock content %}
+

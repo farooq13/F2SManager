@@ -1,0 +1,15 @@
+.task-detail-container {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  background-color: lightblue;
+}
+
+.task-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: lightpink;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  white-space: nowrap;
+}
