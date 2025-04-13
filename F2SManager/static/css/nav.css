@@ -1,19 +1,21 @@
 .nav-container {
   margin-bottom: 2rem;
-  margin-top: 1rem;
   padding: 10px;
+  background-color: rgb(37, 37, 37);
+  color: #fff;
 }
 
 .nav-flex {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-
+  color: #fff;
   margin-right: 2rem;
+  background-color: rgb(37, 37, 37);
 }
 
 .nav-flex .logo {
-  color: teal;
+  color: #fff;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -39,7 +41,7 @@
   height: 36px;
   padding-left: 10px;
   font-size: 16px;
-  outline-color: teal;
+  outline-color: rgb(37, 37, 37);
 }
 
 /* .search-box
@@ -59,30 +61,14 @@
 
 .nav-flex a {
   text-decoration: none;
+  color: #fff;
 }
 
 .nav-right {
   position: relative;
-}
-.nav-right .logout-btn {
-  border: 1px solid teal;
-  padding: 8px 15px;
-  border-radius: 2px;
-  color: teal;
-}
-
-.nav-right .logout-btn:hover {
-  background-color: teal;
   color: #fff;
-  border-radius: 5px;
 }
 
-.nav-right .login-btn {
-  border: 1px solid teal;
-  padding: 8px 15px;
-  border-radius: 2px;
-  color: teal;
-}
 
 .dropdown-container {
   display: flex;
@@ -90,10 +76,13 @@
   align-items: center;
   column-gap: 5px;
   margin-left: 3rem;
+  background-color: #fff;
+  padding: 5px 15px;
 }
 
 .dropdown-container img {
   width: 24px;
+  color: #fff;
 }
 
 .dropdown-container .dropdown-icon {
@@ -107,20 +96,25 @@
 
 .dropdown {
   position: absolute;
-  width: 100px;
+  width: 150px;
   height: auto;
-  border: 1px solid gray;
+  border: 1px solid rgb(37, 37, 37);
   padding: 4px 10px;
   margin-right: -20px;
+  margin-top: 20px;
   border-radius: 2px;
+  background-color: #fff;
+  color: rgb(37, 37, 37);
+  font-weight: bold;
 }
 
 .dropdown a {
   color: black;
+  transition: opacity 0.3s ease;
 }
 
 .dropdown a:hover {
-  color: teal;
+  opacity: .8;
 }
 
 @media (max-width: 500px) {

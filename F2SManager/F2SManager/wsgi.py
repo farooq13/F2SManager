@@ -1,5 +1,5 @@
 """
-WSGI config for F2SManager project.
+WSGI config for f2smanager project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'F2SManager.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'f2smanager.settings')
 
 application = get_wsgi_application()

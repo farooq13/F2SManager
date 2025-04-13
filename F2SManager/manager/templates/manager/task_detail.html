@@ -5,26 +5,59 @@
 <div class="task-detail-container">
   <div class="task-detail-header">
     <div class="task-detail-nav">
-      <div class="filter">
-        <form action="" method="GET">
-          <select name="priority" id="priority">
-            <option value="all">All</option>
-            <option value="low" {% if request.GET.priority == 'low' %}selected{% endif %}>Low</option>
-            <option value="medium" {% if request.GET.priority == 'medium' %}selected{% endif %}>Medium</option>
-            <option value="high" {% if request.GET.priority == 'high' %}selected{% endif %}>High</option>
-          </select>
-        </form>
-      </div>
+      <!-- Task Nav -->
+       <div class="task-detail-flex">
+        <div class="task-detail-flex-left">
+          <div class="task-tab active">
+            <h3>Pending</h3>
+          </div>
+          
+          <div class="task-tab">
+            <h3>In progress</h3>
+          </div>
+          
+          <div class="task-tab">
+            <h3>Completed</h3>
+          </div>
+        </div>
+        
+        <div class="task-detail-flex-right">
+          <a href="#"><h3>Share</h3></a>
+          <button style="font-weight: lighter;"><span>&#9734;</span></button>
+          <button style="font-size: 30px; padding-bottom: 5px;;">&#8230;</button>
+        </div>
+       </div>
+    </div>
+    
+  </div>
 
-      <div class="sort-by">
-        <form action="" method="GET">
-          <select name="sort" id="sort" onChange="this.form.submit()">
-            <option value="created_asc" {% if request.GET.sort == 'created_asc' %}selected{% endif %}>Oldest</option>
-            <option value="created_desc" {% if request.GET.sort == 'created_desc' %}selected{% endif %}>Newest</option>
-            <option value="deadline_asc" {% if request.GET.sort == 'deadline_asc' %}selected{% endif %}>Deadline ↑</option>
-            <option value="deadline_desc" {% if request.GET.sort == 'deadline_desc' %}selected{% endif %}>Deadline ↓</option>
-          </select>
-        </form>
+  <div class="task-activity-container">
+    <div class="task-content-container" data-href="{% url 'task-detail' task.pk %}">
+      <div class="task-title">
+        <div class="task-btns">
+          <h4 class="task-date" >Created: {{ task.created_at|date:"j F, Y"}}</h4>
+          <div class="edit-btn">
+            <a href="{% url 'update-task' task.pk %}">
+              <img class="edit-icon" src="{% static 'assets/icons/edit.svg' %}" alt="">
+            </a>
+            <div class="tooltip">Edit</div>
+          </div>
+  
+          <div class="delete-btn">
+            <a href="{% url 'delete-task' task.pk %}">
+              <img class="delete-icon" src="{% static 'assets/icons/delete.svg' %}" alt="">
+            </a>
+            <div class="tooltip">Delete</div>
+          </div>
+        </div>
+        <h3>  {{ task.title }} <small>{{ task.priority }}</small></h3>
+        <p class="task-content">{{ task.description }}</p>
+        <div>
+          {% if task.todo %}
+            <input type="checkbox" name="" id="todo">
+            {{ task.todo }}
+          {% endif %}
+        </div>
       </div>
     </div>
   </div>

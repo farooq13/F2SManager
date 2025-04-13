@@ -3,6 +3,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.contrib import messages
+from datetime import timedelta
+from django.utils.timezone import make_aware
+from manager.tasks import send_task_reminder
+
 from .models import User, Task
 from django.http import HttpResponse
 from .forms import RegistrationForm, TaskForm
@@ -117,6 +121,7 @@ def create_task(request):
       new_task = form.save(commit=False)
       new_task.author = request.user
       new_task.save()
+      send_task_reminder(new_task)
       return redirect('home')
     else:
       messages.error(request, 'Something is wrong')
@@ -125,18 +130,7 @@ def create_task(request):
   return render(request, 'manager/create_task.html', context)
 
 
-@login_required(login_url='login')
 def update_task(request, pk):
-  context = {}
-  return render(request, 'manager/update_task.html', context)
-
-@login_required(login_url='login')
-def delete_task(request, pk):
-  return render(request, 'manager/delete_task.html')
-
-
-
-def task_edit(request, pk):
   task_to_edit = get_object_or_404(Task, pk=pk)
   form = TaskForm(instance=task_to_edit)
 
@@ -151,6 +145,11 @@ def task_edit(request, pk):
     'form': form
   }
   return render(request, 'manager/update_task.html', context)
+
+@login_required(login_url='login')
+def delete_task(request, pk):
+  return render(request, 'manager/delete_task.html')
+
 
 
 @login_required(login_url='login')
@@ -169,3 +168,6 @@ def delete_task(request, pk):
   return render(request, 'manager/delete_task.html', context)
 
 
+def schedule_task_reminder(task):
+  reminder_time = task.end_date - timedelta(hours=1)
+  send_task_reminder.apply_async((task.id,), eta=make_aware(reminder_time))

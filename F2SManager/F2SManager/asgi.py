@@ -1,5 +1,5 @@
 """
-ASGI config for F2SManager project.
+ASGI config for f2smanager project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'F2SManager.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'f2smanager.settings')
 
 application = get_asgi_application()

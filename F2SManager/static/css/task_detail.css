@@ -1,15 +1,80 @@
 .task-detail-container {
-  margin-left: 2rem;
-  margin-right: 2rem;
-  background-color: lightblue;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+  max-width: 80%;
+  
+  /* background-color: lightblue; */
 }
 
 .task-detail-header {
+  background-color: rgb(37, 37, 37);
+  color: #fff;
+  padding: 10px 15px;
+  margin-left: auto;
+  margin-right: auto;
+  white-space: nowrap;
+} 
+
+.task-detail-flex {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: lightpink;
-  margin-left: 2rem;
-  margin-right: 2rem;
-  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.task-detail-flex-left,
+.task-detail-flex-right {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  max-width: 50%;
+  flex-shrink: 0;
+}
+
+.task-tab {
+  padding: 5px 10px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.task-tab:hover {
+  border-bottom: 2px solid #aaa;
+}
+
+.task-tab.active {
+  border-bottom: 4px solid #fff;
+}
+
+.task-detail-flex-right button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.task-detail-flex-right button:hover, a:hover {
+  color: #ccc;
+  cursor: pointer;
+}
+
+
+
+.task-detail-flex h3, h2, img,span {
+  cursor: pointer;
+  margin-right: 15px;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.task-activity-container {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  /* border-radius: 2px; */
+  /* margin-top: 15px; */
 }
