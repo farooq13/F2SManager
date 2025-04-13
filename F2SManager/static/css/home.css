@@ -1,20 +1,19 @@
 .main-container {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 200px 3fr;
   margin-top: 5rem;
 }
 
 .task-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: start;
+  width: 100%;
 }
 
-.task-container-wrapper {
+.tasks-header {
   display: flex;
   justify-content: space-between;
   align-items: start;
+  width: 50%;
+  margin-bottom: 2rem;
 }
 
 .toggle-by-status {
@@ -38,7 +37,8 @@
 }
 
 .sort-by-container,
-.filter-container select,
+.filter-container,
+.toggle-by-status select
 option {
   font-size: 14px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -46,7 +46,8 @@ option {
   outline-width: 1px;
 }
 
-.sort-by-container,
+.sort-by-container select:hover,
+.toggle-by-status select:hover,
 .filter-container select:hover,
 option:hover {
   cursor: pointer;
@@ -66,7 +67,7 @@ option:hover {
   width: 120px;
   white-space: nowrap;
   background-color: transparent;
-  border: 1px solid teal;
+  border: 1px solid rgb(37, 37, 37);
   padding: 6px 12px;
   margin-left: 1rem;
   border-radius: 5px;
@@ -74,8 +75,13 @@ option:hover {
   margin-top: 3rem;
 }
 
+.create-task-container .create-task:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
 .create-task-container a, img {
-  color: teal;
+  color: rgb(37, 37, 37);
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-weight: bold;
   font-size: 20px;
@@ -90,12 +96,10 @@ option:hover {
 }
 
 
-.task-wrapper {
-  border-left-color: teal;
-}
 
 .task-date {
-  margin-right: 70px;
+  /* margin-right: 50px; */
+  padding-left: 5px;
   color: gray;
   white-space: nowrap;
 }
@@ -107,7 +111,7 @@ option:hover {
 }
 .task-btns {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   align-items: baseline;
   column-gap: 15px;
   margin-bottom: 2rem;
@@ -163,14 +167,31 @@ option:hover {
   margin-left: 10px;
 }
 
-.task-content-container {
+.tasks-grid-container {
+  width: 100%;
+  margin: 0, auto;
+}
+
+.tasks-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 16px;
+  row-gap: 40px;
+  width: 100%;
+  padding-right: 2rem;
+}
+
+.tasks-wrapper {
   margin-top: 1rem;
-  border: 1px solid wheat;
+  border: 1px solid rgb(37, 37, 37);
   border-radius: 5px;
   padding: 10px 20px;
   width: 100%;
 }
 
+.tasks-wrapper:hover {
+  cursor: pointer;
+}
 
 .task-content-container:hover {
 cursor: pointer;
@@ -206,9 +227,5 @@ cursor: pointer;
     width: 36px;
   }
 
-  /* .task-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  } */
+
 }

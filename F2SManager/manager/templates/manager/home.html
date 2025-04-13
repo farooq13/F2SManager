@@ -27,7 +27,7 @@
   </aside>
   <div class="task-container">
     <!-- Task Container Header -->
-    <div class="task-container-wrapper">
+    <div class="tasks-header">
       <div class="filter-container">
         <div class="filter-text">Filter</div>
         <form action="" method="GET">
@@ -65,41 +65,77 @@
         </form>
       </div>
     </div>
-    {% for task in tasks %}
-    <div class="task wrapper">
-        <div class="task-content-container" data-href="{% url 'task-detail' task.pk %}">
-          <div class="task-title">
-            <div class="task-btns">
-              <h4 class="task-date" >Created: {{ task.created_at|date:"j F, Y"}}</h4>
-              <div class="edit-btn">
-                <a href="{% url 'update-task' task.pk %}">
-                  <img class="edit-icon" src="{% static 'assets/icons/edit.svg' %}" alt="">
-                </a>
-                <div class="tooltip">Edit</div>
+    
+    <div class="tasks-grid-container">
+      <div class="tasks-grid">
+        {% for task in tasks %}
+          <div class="tasks-wrapper" data-href="{% url 'task-detail' task.id %}">
+            <div class="task-title">
+              <div class="task-btns">
+                <h4 class="task-date" >Created: {{ task.created_at|date:"j F, Y"}}</h4>
+                <div class="edit-btn">
+                  <a href="{% url 'update-task' task.pk %}">
+                    <img class="edit-icon" src="{% static 'assets/icons/edit.svg' %}" alt="">
+                  </a>
+                  <div class="tooltip">Edit</div>
+                </div>
+        
+                <div class="delete-btn">
+                  <a href="{% url 'delete-task' task.pk %}">
+                    <img class="delete-icon" src="{% static 'assets/icons/delete.svg' %}" alt="">
+                  </a>
+                  <div class="tooltip">Delete</div>
+                </div>
               </div>
-      
-              <div class="delete-btn">
-                <a href="{% url 'delete-task' task.pk %}">
-                  <img class="delete-icon" src="{% static 'assets/icons/delete.svg' %}" alt="">
-                </a>
-                <div class="tooltip">Delete</div>
+              <h3>  {{ task.title }} <small>{{ task.priority }}</small></h3>
+              <p class="task-content">{{ task.description }}</p>
+              <div>
+                {% if task.todo %}
+                  <input type="checkbox" name="" id="todo">
+                  {{ task.todo }}
+                {% endif %}
               </div>
-            </div>
-            <h3>  {{ task.title }} <small>{{ task.priority }}</small></h3>
-            <p class="task-content">{{ task.description }}</p>
-            <div>
-              {% if task.todo %}
-                <input type="checkbox" name="" id="todo">
-                {{ task.todo }}
-              {% endif %}
             </div>
           </div>
-        </div>
-        {% empty %}
-        <p class="filter-notfound">No task found for this filter.</p>
-      {% endfor %}
-  </div>
-  
+        {% endfor %}
+      </div>
+    </div>
 </div>
 {% endblock content %}
 
+<div class="tasks-grid">
+  {% for task in tasks %}
+  <div class="task-wrapper">
+      <div class="task-content-container" data-href="{% url 'task-detail' task.pk %}">
+        <div class="task-title">
+          <div class="task-btns">
+            <h4 class="task-date" >Created: {{ task.created_at|date:"j F, Y"}}</h4>
+            <div class="edit-btn">
+              <a href="{% url 'update-task' task.pk %}">
+                <img class="edit-icon" src="{% static 'assets/icons/edit.svg' %}" alt="">
+              </a>
+              <div class="tooltip">Edit</div>
+            </div>
+    
+            <div class="delete-btn">
+              <a href="{% url 'delete-task' task.pk %}">
+                <img class="delete-icon" src="{% static 'assets/icons/delete.svg' %}" alt="">
+              </a>
+              <div class="tooltip">Delete</div>
+            </div>
+          </div>
+          <h3>  {{ task.title }} <small>{{ task.priority }}</small></h3>
+          <p class="task-content">{{ task.description }}</p>
+          <div>
+            {% if task.todo %}
+              <input type="checkbox" name="" id="todo">
+              {{ task.todo }}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <p class="filter-notfound">No task found for this filter.</p>
+  {% endfor %}
+</div>
+</div>

@@ -34,7 +34,7 @@ const toggleUserSetting = () => {
 
 // add click event listeners to the task content container
 document.addEventListener("DOMContentLoaded", function() {
-  const containers = document.querySelectorAll(".task-content-container");
+  const containers = document.querySelectorAll(".tasks-wrapper");
   containers.forEach(container => {
     container.addEventListener("click", function() {
       const url = this.getAttribute("data-href");
@@ -44,3 +44,13 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 });
+
+
+// task tabs
+const tabs = document.querySelectorAll('.task-tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
