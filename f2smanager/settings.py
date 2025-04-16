@@ -25,6 +25,7 @@ else:
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
+    'f2smanager.onrender.com',
 ]
 
 
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'manager',
     'django_celery_beat',
     'admin_honeypot',
+    'dj_database_url',
 ]
 
 MIDDLEWARE = [
