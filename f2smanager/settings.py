@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'manager',
     'django_celery_beat',
     'admin_honeypot',
-    'dj_database_url',
 ]
 
 MIDDLEWARE = [
