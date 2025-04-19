@@ -11,18 +11,18 @@
 ![screenshot](./F2SManager/static/assets/f2s-demo1.png)
 
 
-## 🚀 Features
+##  Features
 
-- ✅ Create, edit, and delete tasks
-- 📌 Set task priority: Low, Medium, High
-- 📆 Add start and end dates
-- 🔄 Filter by priority and status (Pending, Completed)
-- 🧭 Sort by created date, start date, or end date
-- 📱 Responsive UI with sidebar and grid layout
-- 🔔 Planned: Email reminders & deadline alerts
+-  Create, edit, and delete tasks
+-  Set task priority: Low, Medium, High
+-  Add start and end dates
+-  Filter by priority and status (Pending, Completed)
+-  Sort by created date, start date, or end date
+-  Responsive UI with sidebar and grid layout
+-  Planned: Email reminders & deadline alerts
 
 
-## 🏗️ Tech Stack
+##  Tech Stack
 
 - **Backend:** Django
 - **Frontend:** HTML, CSS, JavaScript
@@ -30,7 +30,7 @@
 - **Upcoming:** Celery + Redis (for background task reminders)
 
 
-## 🛠️ Installation
+## Installation
 
 ### 1. Clone the repo:
 ```py
