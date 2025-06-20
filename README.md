@@ -26,7 +26,7 @@
 
 - **Backend:** Django
 - **Frontend:** HTML, CSS, JavaScript
-- **Database:** SQLite (default)
+- **Database:** PostgreSQL
 - **Upcoming:** Celery + Redis (for background task reminders)
 
 
