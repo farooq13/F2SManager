@@ -1,6 +1,6 @@
 # F2SManager
 
-**F2SManager** (FasFound Software Manager) is a powerful yet simple Django-based productivity app that helps users manage their daily tasks with features like filtering, sorting, and deadline tracking.
+**F2SManager** is a powerful yet simple Django-based productivity app that helps users manage their daily tasks with features like filtering, sorting, and deadline tracking.
 
 
 
