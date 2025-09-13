@@ -53,7 +53,5 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-### 4. Visit http://localhost:8000/ to view the app!
-
 
 ## *This project is still evolving. Contributions and ideas are always welcome!*
